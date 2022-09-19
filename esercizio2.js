@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')();
 
-let nome_utente = prompt("inserisci nome ");
-let eta_utente = prompt("inserisci età ");
+let nome_utente = prompt("inserisci nome: ");
+let eta_utente = prompt("inserisci età: ");
 
 let numero_cabina = Math.floor(Math.random() * 25);
 
