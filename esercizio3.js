@@ -1,14 +1,16 @@
 const prompt = require('prompt-sync')();
 
-let array_utenti = ["paolo","stefano","claudio","mirko","edmondo"];
-let array_password = ["password", "password1", "fagiano9", "forzaspal", "bellojavascripteh"];
+const list_utenti = ["paolo","stefano","claudio","mirko","edmondo"];
+const list_password = ["password", "password1", "fagiano9", "forzaspal", "bellojavascripteh"];
 
-let nome_utente = prompt("inserisci nome utente: ");
+let nome_utente = prompt("Inserire nome utente: ");
 
-if(array_utenti.indexOf(nome_utente)){
-
-    
-
+function controlloUtenti(a){
+    console.log(list_utenti.indexOf(a))
 }
 
-let password = prompt("inserisci password: ");
+if(controlloUtenti(nome_utente) === -1){
+
+    console.log("vattene!")
+
+}
