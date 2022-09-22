@@ -1,81 +1,87 @@
 const prompt = require('prompt-sync')();
 
 let risultato = 0;
+let risultati_saved = [];
 
-let operazione_scelta = prompt("seleziona un operazione tra: '+', '-', 'x', ':' altrimenti scrivere 'altro'   ")
+let loop_programma = "si";
 
-let numero1 = parseInt(prompt("inserire primo numero: "));
-let numero2 = parseInt(prompt("inserire secondo numero: "));
+// INIZIO LOOP CALCOLATRICE
+while(loop_programma == "si"){
 
-const risultati_saved = [];
+    let operazione_scelta = prompt("seleziona un operazione tra: '+', '-', 'x', ':', 'radice' o 'potenza'   ");
 
-// OPERAZIONI VARIE
-if(operazione_scelta == "+"){
+    // ADDIZIONE
+    if(operazione_scelta == "+"){
 
-    risultato = numero1 + numero2;
-    console.log(numero1 + " + " + numero2 + " = " + risultato);
-    risultati_saved.push(numero1 + " + " + numero2 + " = " + risultato);
+        let numero1 = parseInt(prompt("inserire primo numero:  "));
+        let numero2 = parseInt(prompt("inserire secondo numero:  "));
+        risultato = numero1 + numero2;
+        console.log(numero1 + " + " + numero2 + " = " + risultato);
+        risultati_saved.push(numero1 + " + " + numero2 + " = " + risultato);
+    
+    }
 
-}
+    // SOTTRAZIONE
+    if(operazione_scelta == "-"){
 
-if(operazione_scelta == "-"){
+        let numero1 = parseInt(prompt("inserire primo numero:  "));
+        let numero2 = parseInt(prompt("inserire secondo numero:  "));
+        risultato = numero1 - numero2;
+        console.log(numero1 + " - " + numero2 + " = " + risultato);
+        risultati_saved.push(numero1 + " - " + numero2 + " = " + risultato);
+    
+    }
 
-    risultato = numero1 - numero2;
-    console.log(numero1 + " - " + numero2 + " = " + risultato);
-    risultati_saved.push(numero1 + " - " + numero2 + " = " + risultato);
+    //MOLTIPLICAZIONE
+    if(operazione_scelta == "x"){
 
-}
+        let numero1 = parseInt(prompt("inserire primo numero:  "));
+        let numero2 = parseInt(prompt("inserire secondo numero:  "));
+        risultato = numero1 * numero2;
+        console.log(numero1 + " x " + numero2 + " = " + risultato);
+        risultati_saved.push(numero1 + " x " + numero2 + " = " + risultato);
+    
+    }
 
-if(operazione_scelta == "x"){
+    //DIVISIONE
+    if(operazione_scelta == ":"){
 
-    risultato = numero1 * numero2;
-    console.log(numero1 + " x " + numero2 + " = " + risultato);
-    risultati_saved.push(numero1 + " x " + numero2 + " = " + risultato);
+        let numero1 = parseInt(prompt("inserire primo numero:  "));
+        let numero2 = parseInt(prompt("inserire secondo numero:  "));
+        risultato = numero1 / numero2;
+        console.log(numero1 + " : " + numero2 + " = " + risultato);
+        risultati_saved.push(numero1 + " : " + numero2 + " = " + risultato);
+    
+    }
 
-}
+    // RADICE QUADRATA
+    if(operazione_scelta == "radice"){
 
-if(operazione_scelta == ":"){
-
-    risultato = numero1 / numero2;
-    console.log(numero1 + " : " + numero2 + " = " + risultato);
-    risultati_saved.push(numero1 + " : " + numero2 + " = " + risultato);
-
-}
-
-//ALTRE OPERAZIONI
-if(operazione_scelta == "altro"){
-
-    let altre_operazioni = prompt("Scrivi 'potenze' per calcolare delle potenze o scrivi 'radice' per calcolare la radice quadrata ")
-
-    if(altre_operazioni == "radice"){
-
-        let numero1 = prompt("inserire il numero di cui si vuole la radice quadrata: ");
+        let numero1 = parseInt(prompt("inserire il numero di cui si vuole la radice quadrata:  "));
         risultato = Math.sqrt(numero1);
         console.log("La radice quadrata di " + numero1 + " è: " + risultato)
         risultati_saved.push("La radice quadrata di " + numero1 + " è: " + risultato)
 
     }
 
-    if(altre_operazioni == "potenze"){
-        let numero1 = prompt("Scrivi la base della potenza: ");
-        let numero2 = prompt("Scrivi il suo esponente: ");
+    // POTENZA
+    if(operazione_scelta == "potenza"){
+
+        let numero1 = parseInt(prompt("Scrivi la base della potenza:  "));
+        let numero2 = parseInt(prompt("Scrivi il suo esponente:  "));
         risultato = Math.pow(numero1, numero2);
         console.log(numero1  + " elevato alla " + numero2 + " è uguale a: " + risultato)
         risultati_saved.push(numero1  + " elevato alla " + numero2 + " è uguale a: " + risultato)
 
     }
 
-}
+    // CRONOLOGIA OPERAZIONI
+    const vedere_risultati = console.log(risultati_saved);
 
-// VEDERE CRONOLOGIA OPERAZIONI
-let vedere_risultati = prompt("Vuoi vedere la cronologia delle operazioni? (scrivere 'si' o 'no')");
+    // CHIEDERE SE SI VUOLE FAR RIPARTIRE LA CALCOLATRICE
+    loop_programma = prompt("Vuoi usare ancora la calcolatrice? Scrivere 'si' o 'no'  ")
 
-if(vedere_risultati == "si"){
-    
-    console.log(risultati_saved);
-
-}else{
-
-    console.log("Vabene allora.. :(")
-
+    if(loop_programma != "si"){
+        break
+    }
 }
